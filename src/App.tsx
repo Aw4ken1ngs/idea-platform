@@ -1,34 +1,28 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import CurrencyFilter from "./components/CurrencyFilter/CurrencyFilter";
 import StopsFilter from "./components/StopsFilter/StopsFilter";
 import TicketsList from "./components/TicketsList/TicketsList";
 import ticketsData from "./tickets.json";
-import "./styles.css"
+import "./styles.css";
+import {useSelector} from "react-redux";
+import { RootState } from "./store/store";
 
 const App: React.FC = () => {
+    const stopsFilter = useSelector((store:RootState)=>{
+        return store.filters.stops
+    })
 
-    const [currency, setCurrency] = useState<"RUB" | "USD" | "EUR">("RUB");
-    const [stopsFilter, setStopsFilter] = useState<number[]>([]);
-
-      const handleCurrencyChange = (newCurrency: "RUB" | "USD" | "EUR") => {
-        setCurrency(newCurrency);
-    };
-
-    const handleStopsChange = (selectedStops: number[]) => {
-        setStopsFilter(selectedStops);
-    };
-
-    const filteredTickets = ticketsData.tickets.filter((ticket) =>
+    const filteredTickets = ticketsData.tickets.filter((ticket: any) =>
         stopsFilter.length === 0 ? true : stopsFilter.includes(ticket.stops)
     );
 
     return (
         <div className="app">
             <div className="container-filter">
-            <CurrencyFilter currency={currency} onCurrencyChange={handleCurrencyChange} />
-            <StopsFilter selectedStops={stopsFilter} onStopsChange={handleStopsChange} />
+                <CurrencyFilter/>
+                <StopsFilter />
             </div>
-            <TicketsList tickets={filteredTickets} currency={currency} />
+            <TicketsList tickets={filteredTickets} />
         </div>
     );
 };

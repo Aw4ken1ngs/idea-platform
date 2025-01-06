@@ -1,32 +1,34 @@
 import React from "react";
+import { Currency } from "../../types";
+import styles from "./CurrencyFilter.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { setCurrency } from "../../store/filters/filtersSlice";
 
-interface CurrencyFilterProps {
-    currency: "RUB" | "USD" | "EUR";
-    onCurrencyChange: (currency: "RUB" | "USD" | "EUR") => void;
-}
+const CurrencyFilter: React.FC = () => {
+    const dispatch = useDispatch();
+    const currency = useSelector((state: RootState) => state.filters.currency);
 
-const CurrencyFilter: React.FC<CurrencyFilterProps> = ({ currency, onCurrencyChange }) => {
+    const onCurrencyChange = (selectedCurrency: Currency) => {
+        dispatch(setCurrency(selectedCurrency));
+    };
+
     return (
-        <div className="currency-filter">
-            <h3>Выберите валюту:</h3>
-            <button
-                className={currency === "RUB" ? "active" : ""}
-                onClick={() => onCurrencyChange("RUB")}
-            >
-                RUB
-            </button>
-            <button
-                className={currency === "USD" ? "active" : ""}
-                onClick={() => onCurrencyChange("USD")}
-            >
-                USD
-            </button>
-            <button
-                className={currency === "EUR" ? "active" : ""}
-                onClick={() => onCurrencyChange("EUR")}
-            >
-                EUR
-            </button>
+        <div className={styles.currencyFilter}>
+            <h3 className={styles.filterTitle}>Выберите валюту:</h3>
+            <div className={styles.buttonGroup}>
+                {Object.values(Currency).map((curr) => (
+                    <button
+                        key={curr}
+                        className={`${styles.currencyButton} ${
+                            currency === curr ? styles.active : ""
+                        }`}
+                        onClick={() => onCurrencyChange(curr as Currency)}
+                    >
+                        {curr}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
