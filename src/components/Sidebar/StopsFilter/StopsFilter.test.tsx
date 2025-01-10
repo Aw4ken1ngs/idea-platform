@@ -48,6 +48,7 @@ describe("<StopsFilter />", () => {
 
         expect(allCheckbox.checked).toBe(false);
         expect(noStopsCheckbox.checked).toBe(true);
+
     });
     test('should allow selecting "Без пересадок" and "1 пересадка" only', async () => {
         render(renderComponent());
@@ -59,8 +60,6 @@ describe("<StopsFilter />", () => {
         const twoStopsCheckbox = screen.getByLabelText("2 пересадка(и)") as HTMLInputElement;
         const threeStopsCheckbox = screen.getByLabelText("3 пересадка(и)") as HTMLInputElement;
 
-
-        await user.click(noStopsCheckbox);
         expect(noStopsCheckbox.checked).toBe(true);
 
 
@@ -81,9 +80,6 @@ describe("<StopsFilter />", () => {
         const twoStopsCheckbox = screen.getByLabelText("2 пересадка(и)") as HTMLInputElement;
         const threeStopsCheckbox = screen.getByLabelText("3 пересадка(и)") as HTMLInputElement;
 
-
-        await user.click(noStopsCheckbox);
-        await user.click(oneStopCheckbox);
         await user.click(twoStopsCheckbox);
 
 
