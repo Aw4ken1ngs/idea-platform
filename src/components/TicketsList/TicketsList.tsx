@@ -16,7 +16,7 @@ const TicketsList: React.FC<TicketsListProps> = ({ tickets }) => {
     return (
         <div className="tickets-list">
             {sortedTickets.map((ticket, index) => (
-                <TicketCard key={index} ticket={ticket} currency={currency} />
+                <TicketCard key={index} ticket={ticket} currency={currency} data-testid='ticket-card' />
             ))}
         </div>
     );

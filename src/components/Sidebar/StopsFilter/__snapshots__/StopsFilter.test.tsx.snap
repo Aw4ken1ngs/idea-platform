@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StopsFilter /> should match snapshot 1`] = `
+<div>
+  <div
+    class="stopsFilter"
+  >
+    <h3
+      class="filterTitle"
+    >
+      Количество пересадок:
+    </h3>
+    <div
+      class="checkboxGroup"
+    >
+      <label
+        class="checkboxLabel"
+      >
+        <input
+          checked=""
+          class="checkbox"
+          data-testid="checkbox-all"
+          type="checkbox"
+        />
+        Все
+      </label>
+      <label
+        class="checkboxLabel"
+      >
+        <input
+          class="checkbox"
+          data-testid="checkbox-0"
+          type="checkbox"
+        />
+        Без пересадок
+      </label>
+      <label
+        class="checkboxLabel"
+      >
+        <input
+          class="checkbox"
+          data-testid="checkbox-1"
+          type="checkbox"
+        />
+        1 пересадка(и)
+      </label>
+      <label
+        class="checkboxLabel"
+      >
+        <input
+          class="checkbox"
+          data-testid="checkbox-2"
+          type="checkbox"
+        />
+        2 пересадка(и)
+      </label>
+      <label
+        class="checkboxLabel"
+      >
+        <input
+          class="checkbox"
+          data-testid="checkbox-3"
+          type="checkbox"
+        />
+        3 пересадка(и)
+      </label>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CurrencyFilter/> should match snapshot 1`] = `
+<div>
+  <div
+    class="ticketCard"
+  >
+    <div
+      class="ticketInfo"
+    >
+      <span
+        class="carrier"
+      >
+        TK
+      </span>
+      <button
+        class="buyButton"
+      >
+        Купить за 
+        12400.00
+         
+        RUB
+      </button>
+    </div>
+    <div
+      class="departure"
+    >
+      <span
+        class="time"
+      >
+        16:20
+      </span>
+      <span
+        class="location"
+        data-testid="location-VVO"
+      >
+        Владивосток
+         (
+        VVO
+        )
+      </span>
+      <span
+        class="date"
+      >
+        12.05.18
+      </span>
+    </div>
+    <div
+      class="arrowBlock"
+    >
+      <span
+        class="arrow"
+      >
+        →
+      </span>
+      <span
+        class="stops"
+      >
+        3
+         пересадок
+      </span>
+    </div>
+    <div
+      class="arrival"
+    >
+      <span
+        class="time"
+      >
+        22:10
+      </span>
+      <span
+        class="location"
+        data-testid="location-TLV"
+      >
+        Тель-Авив
+         (
+        TLV
+        )
+      </span>
+      <span
+        class="date"
+      >
+        12.05.18
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TicketCard /> should match snapshot 1`] = `
+<div>
+  <div
+    class="ticketCard"
+  >
+    <div
+      class="ticketInfo"
+    >
+      <span
+        class="carrier"
+      >
+        Test Airline
+      </span>
+      <button
+        class="buyButton"
+      >
+        Купить за 
+        5000.00
+         
+        RUB
+      </button>
+    </div>
+    <div
+      class="departure"
+    >
+      <span
+        class="time"
+      >
+        10:00
+      </span>
+      <span
+        class="location"
+      >
+        Moscow
+         (
+        MOW
+        )
+      </span>
+      <span
+        class="date"
+      >
+        2025-01-10
+      </span>
+    </div>
+    <div
+      class="arrowBlock"
+    >
+      <span
+        class="arrow"
+      >
+        →
+      </span>
+      <span
+        class="stops"
+      >
+        0
+         пересадок
+      </span>
+    </div>
+    <div
+      class="arrival"
+    >
+      <span
+        class="time"
+      >
+        12:00
+      </span>
+      <span
+        class="location"
+      >
+        Saint Petersburg
+         (
+        LED
+        )
+      </span>
+      <span
+        class="date"
+      >
+        2025-01-10
+      </span>
+    </div>
+  </div>
+</div>
+`;

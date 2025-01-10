@@ -1,9 +1,9 @@
 import React from "react";
-import { Currency } from "../../types";
+import { Currency } from "../../../types";
 import styles from "./CurrencyFilter.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../store/store";
-import { setCurrency } from "../../store/filters/filtersSlice";
+import { RootState } from "../../../store/store";
+import { setCurrency } from "../../../store/filters/filtersSlice";
 
 const CurrencyFilter: React.FC = () => {
     const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const CurrencyFilter: React.FC = () => {
                 {Object.values(Currency).map((curr) => (
                     <button
                         key={curr}
+                        data-testid={`currency-button-${curr}`}
                         className={`${styles.currencyButton} ${
                             currency === curr ? styles.active : ""
                         }`}

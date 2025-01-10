@@ -19,7 +19,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket, currency }) => {
             </div>
             <div className={styles.departure}>
                 <span className={styles.time}>{ticket.departure_time}</span>
-                <span className={styles.location}>
+                <span className={styles.location} data-testid={`location-${ticket.origin}`}>
                     {ticket.origin_name} ({ticket.origin})
                 </span>
                 <span className={styles.date}>{ticket.departure_date}</span>
