@@ -10,13 +10,17 @@ type TicketCardProps = {
 };
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket, currency }) => {
+    console.log('TicketCard', ticket);
     return (
         <div className={styles.ticketCard}>
             <div className={styles.ticketInfo}>
-                <span className={styles.carrier}>{ticket.carrier}</span>
+                <span
+                    className={styles.carrier}
+                    style={{backgroundImage: `url('/logos/${ticket.carrier}.png')`}}
+                />
                 <button className={styles.buyButton}>
                     Купить за {calculatePrice(ticket.price, currency)}{' '}
-                    <CurrencyIcon currency={currency} />
+                    <CurrencyIcon currency={currency}/>
                 </button>
             </div>
             <div className={styles.departure}>
