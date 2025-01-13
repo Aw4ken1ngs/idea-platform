@@ -1,0 +1,1 @@
+export const CHECKBOX_ALL_TEST_ID:string = "checkbox-all"

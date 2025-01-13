@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import * as filtersSlice from "../../../store/filters/filtersSlice";
 import { Currency } from "../../../types";
 import StopsFilter from "./StopsFilter";
+import {CHECKBOX_ALL_TEST_ID} from "../../../constants/checkboxAllTestId";
 
 const store = configureStore({
     reducer: {
@@ -34,15 +35,15 @@ describe("<StopsFilter />", () => {
         expect(container).toMatchSnapshot();
     });
 
-    test('should check that the checkbox "Все" is changing', async () => {
-        render(renderComponent());
+    test('should check that the checkbox "All" is changing', async () => {
+        const { getByTestId } = render(renderComponent());
 
-        const allCheckbox = screen.getByTestId("checkbox-all") as HTMLInputElement;
+        const allCheckbox = getByTestId(CHECKBOX_ALL_TEST_ID) as HTMLInputElement;
 
 
         expect(allCheckbox.checked).toBe(true);
 
-        const noStopsCheckbox = screen.getByLabelText("Без пересадок") as HTMLInputElement;
+        const noStopsCheckbox = getByTestId("checkbox-0") as HTMLInputElement;
 
         await user.click(noStopsCheckbox);
 
@@ -50,15 +51,15 @@ describe("<StopsFilter />", () => {
         expect(noStopsCheckbox.checked).toBe(true);
 
     });
-    test('should allow selecting "Без пересадок" and "1 пересадка" only', async () => {
-        render(renderComponent());
+    test('should allow selecting "No stops" and "1 stop" only', async () => {
+        const { getByTestId } = render(renderComponent());
 
 
-        const noStopsCheckbox = screen.getByLabelText("Без пересадок") as HTMLInputElement;
-        const oneStopCheckbox = screen.getByLabelText("1 пересадка(и)") as HTMLInputElement;
-        const allCheckbox = screen.getByTestId("checkbox-all") as HTMLInputElement;
-        const twoStopsCheckbox = screen.getByLabelText("2 пересадка(и)") as HTMLInputElement;
-        const threeStopsCheckbox = screen.getByLabelText("3 пересадка(и)") as HTMLInputElement;
+        const noStopsCheckbox = getByTestId("checkbox-0") as HTMLInputElement;
+        const oneStopCheckbox = getByTestId("checkbox-1") as HTMLInputElement;
+        const allCheckbox = getByTestId(CHECKBOX_ALL_TEST_ID) as HTMLInputElement;
+        const twoStopsCheckbox = getByTestId("checkbox-2") as HTMLInputElement;
+        const threeStopsCheckbox = getByTestId("checkbox-3") as HTMLInputElement;
 
         expect(noStopsCheckbox.checked).toBe(true);
 
@@ -71,14 +72,14 @@ describe("<StopsFilter />", () => {
         expect(threeStopsCheckbox.checked).toBe(false);
     });
 
-    test('should uncheck all other checkboxes when "Все" is selected', async () => {
-        render(renderComponent());
+    test('should uncheck all other checkboxes when "All" is selected', async () => {
+        const { getByTestId } = render(renderComponent());
 
-        const allCheckbox = screen.getByTestId("checkbox-all") as HTMLInputElement;
-        const noStopsCheckbox = screen.getByLabelText("Без пересадок") as HTMLInputElement;
-        const oneStopCheckbox = screen.getByLabelText("1 пересадка(и)") as HTMLInputElement;
-        const twoStopsCheckbox = screen.getByLabelText("2 пересадка(и)") as HTMLInputElement;
-        const threeStopsCheckbox = screen.getByLabelText("3 пересадка(и)") as HTMLInputElement;
+        const noStopsCheckbox = getByTestId("checkbox-0") as HTMLInputElement;
+        const oneStopCheckbox = getByTestId("checkbox-1") as HTMLInputElement;
+        const allCheckbox = getByTestId(CHECKBOX_ALL_TEST_ID) as HTMLInputElement;
+        const twoStopsCheckbox = getByTestId("checkbox-2") as HTMLInputElement;
+        const threeStopsCheckbox = getByTestId("checkbox-3") as HTMLInputElement;
 
         await user.click(twoStopsCheckbox);
 

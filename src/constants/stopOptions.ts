@@ -1,0 +1,1 @@
+export const STOP_OPTIONS = [0, 1, 2, 3];

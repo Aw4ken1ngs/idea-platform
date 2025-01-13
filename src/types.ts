@@ -17,3 +17,9 @@ export enum Currency {
     USD = 'USD',
     EUR = 'EUR',
 }
+
+export type SvgIconProps = {
+    width?: number;
+    height?: number;
+    fill?: string;
+};

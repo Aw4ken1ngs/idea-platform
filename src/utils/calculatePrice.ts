@@ -1,10 +1,10 @@
 import { Currency } from '../types';
+import { EXCHANGE_RATES } from "../constants/exchangeRates";
 
-const exchangeRates = { RUB: 1, USD: 99.83, EUR: 103.98 };
 
 export function calculatePrice(price: number, currency: Currency): string {
-    if (!exchangeRates[currency]) {
+    if (!EXCHANGE_RATES[currency]) {
         throw new Error(`Unsupported currency: ${currency}`);
     }
-    return (price / exchangeRates[currency]).toFixed(2);
+    return (price / EXCHANGE_RATES[currency]).toFixed(2);
 }

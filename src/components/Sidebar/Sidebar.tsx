@@ -6,8 +6,8 @@ import StopsFilter from "./StopsFilter/StopsFilter";
 const Sidebar: React.FC = () => {
   return (
     <div className={styles.containerFilter}>
-    <CurrencyFilter/>
-    <StopsFilter/>
+      <CurrencyFilter/>
+      <StopsFilter/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import { Currency } from "../../../types";
 import styles from "./CurrencyFilter.module.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,9 +9,12 @@ const CurrencyFilter: React.FC = () => {
     const dispatch = useDispatch();
     const currency = useSelector((state: RootState) => state.filters.currency);
 
-    const onCurrencyChange = (selectedCurrency: Currency) => {
-        dispatch(setCurrency(selectedCurrency));
-    };
+    const onCurrencyChange = useCallback(
+        (selectedCurrency: Currency) => {
+            dispatch(setCurrency(selectedCurrency));
+        },
+        [dispatch]
+    );
 
     return (
         <div className={styles.currencyFilter}>

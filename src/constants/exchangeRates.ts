@@ -1,0 +1,1 @@
+export const EXCHANGE_RATES = { RUB: 1, USD: 99.83, EUR: 103.98 };

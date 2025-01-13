@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import TicketCard from '../TicketCard/TicketCard';
 import { Ticket } from '../../types';
 import { useSelector } from "react-redux";
@@ -11,12 +11,14 @@ type TicketsListProps = {
 const TicketsList: React.FC<TicketsListProps> = ({ tickets }) => {
     const currency = useSelector((state: RootState) => state.filters.currency);
 
-    const sortedTickets = [...tickets].sort((a, b) => a.price - b.price);
+    const sortedTickets = useMemo(() => {
+        return [...tickets].sort((a, b) => a.price - b.price);
+    }, [tickets]);
 
     return (
         <div className="tickets-list">
             {sortedTickets.map((ticket, index) => (
-                <TicketCard key={index} ticket={ticket} currency={currency} data-testid='ticket-card' />
+                <TicketCard key={index} ticket={ticket} currency={currency} />
             ))}
         </div>
     );
